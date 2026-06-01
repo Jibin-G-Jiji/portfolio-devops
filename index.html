@@ -487,6 +487,12 @@
     gap: 18px;
   }
 
+  .card-link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+  }
+
   .card {
     background: var(--surface);
     border: 1px solid var(--border);
@@ -666,7 +672,7 @@
     <span></span>
   </div>
   <nav>
-    <div class="logo">JI BIN</div>
+    <div class="logo">JIBIN</div>
     <div class="nav-links">
       <a href="#skills">Skills</a>
       <a href="#projects">Projects</a>
@@ -698,15 +704,16 @@
         <article class="card">
           <div class="card-hero">
             <span class="card-tag">Cloud</span>
-            <span>Core services</span>
+            <span>Core Services</span>
           </div>
-          <h3 class="card-title">AWS Infrastructure</h3>
-          <p class="card-copy">Provisioned secure, scalable AWS environments with VPCs, IAM policies, monitoring, and cost-aware architecture.</p>
+          <h3 class="card-title">Cloud Infrastructure Management</h3>
+          <p class="card-copy">Designed and managed scalable AWS infrastructure using EC2, VPC, IAM, Security Groups, and CloudWatch. Implemented secure networking, access control, monitoring, and cost-optimized resource management for production-ready environments.</p>
           <div class="tag-list">
             <span class="tag-pill">EC2</span>
-            <span class="tag-pill">S3</span>
-            <span class="tag-pill">RDS</span>
+            <span class="tag-pill">VPC</span>
+            <span class="tag-pill">IAM</span>
             <span class="tag-pill">CloudWatch</span>
+            <span class="tag-pill">Security Groups</span>
           </div>
         </article>
         <article class="card">
@@ -714,25 +721,73 @@
             <span class="card-tag">Automation</span>
             <span>CI/CD</span>
           </div>
-          <h3 class="card-title">Pipeline Building</h3>
-          <p class="card-copy">Created repeatable deployment pipelines using GitHub Actions, Terraform, and scripting for fast, consistent releases.</p>
+          <h3 class="card-title">CI/CD Pipeline Automation</h3>
+          <p class="card-copy">Built automated CI/CD pipelines using GitHub Actions and Jenkins to streamline application deployment. Automated testing, container image creation, and deployment workflows to ensure faster and more reliable releases.</p>
           <div class="tag-list">
             <span class="tag-pill">GitHub Actions</span>
-            <span class="tag-pill">Terraform</span>
+            <span class="tag-pill">Jenkins</span>
             <span class="tag-pill">Docker</span>
+            <span class="tag-pill">CI/CD</span>
+            <span class="tag-pill">Automation</span>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-hero">
+            <span class="card-tag">IaC</span>
+            <span>DevOps</span>
+          </div>
+          <h3 class="card-title">Infrastructure as Code</h3>
+          <p class="card-copy">Provisioned and managed cloud infrastructure using Terraform, enabling version-controlled, repeatable, and scalable deployments across development and production environments.</p>
+          <div class="tag-list">
+            <span class="tag-pill">Terraform</span>
+            <span class="tag-pill">AWS</span>
+            <span class="tag-pill">IaC</span>
+            <span class="tag-pill">State Management</span>
+            <span class="tag-pill">Automation</span>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-hero">
+            <span class="card-tag">Containers</span>
+            <span>Deployment</span>
+          </div>
+          <h3 class="card-title">Containerized Applications</h3>
+          <p class="card-copy">Packaged and deployed applications using Docker containers, ensuring consistent environments across development, testing, and production systems.</p>
+          <div class="tag-list">
+            <span class="tag-pill">Docker</span>
+            <span class="tag-pill">Docker Hub</span>
+            <span class="tag-pill">Containerization</span>
+            <span class="tag-pill">Linux</span>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-hero">
+            <span class="card-tag">Operations</span>
+            <span>System Management</span>
+          </div>
+          <h3 class="card-title">Linux System Administration</h3>
+          <p class="card-copy">Managed Linux servers, user permissions, package installations, process monitoring, and troubleshooting to maintain reliable application environments.</p>
+          <div class="tag-list">
+            <span class="tag-pill">Ubuntu</span>
+            <span class="tag-pill">Shell Scripting</span>
+            <span class="tag-pill">Systemd</span>
+            <span class="tag-pill">SSH</span>
+            <span class="tag-pill">Nginx</span>
           </div>
         </article>
         <article class="card">
           <div class="card-hero">
             <span class="card-tag">Security</span>
-            <span>Best practices</span>
+            <span>Best Practices</span>
           </div>
-          <h3 class="card-title">Reliable Deployments</h3>
-          <p class="card-copy">Focused on secure configurations, role-based access, and monitoring so production systems stay resilient and auditable.</p>
+          <h3 class="card-title">Monitoring & Security Operations</h3>
+          <p class="card-copy">Implemented monitoring, logging, and security best practices using CloudWatch, IAM policies, and server hardening techniques to improve system reliability and compliance.</p>
           <div class="tag-list">
+            <span class="tag-pill">CloudWatch</span>
             <span class="tag-pill">IAM</span>
-            <span class="tag-pill">Networking</span>
-            <span class="tag-pill">Backups</span>
+            <span class="tag-pill">Logging</span>
+            <span class="tag-pill">Monitoring</span>
+            <span class="tag-pill">Security</span>
           </div>
         </article>
       </div>
@@ -744,45 +799,51 @@
         <h2 class="section-title">Recent Projects</h2>
       </div>
       <div class="cards-grid">
-        <article class="card">
-          <div class="card-hero">
-            <span class="card-tag">Project</span>
-            <span>DevOps stack</span>
-          </div>
-          <h3 class="card-title">Deployment Automation</h3>
-          <p class="card-copy">Implemented end-to-end automation for testing, containerization, and staging using GitHub Actions and Terraform.</p>
-          <div class="tag-list">
-            <span class="tag-pill">CI/CD</span>
-            <span class="tag-pill">Docker</span>
-            <span class="tag-pill">Terraform</span>
-          </div>
-        </article>
-        <article class="card">
-          <div class="card-hero">
-            <span class="card-tag">Project</span>
-            <span>Cloud design</span>
-          </div>
-          <h3 class="card-title">AWS Architecture</h3>
-          <p class="card-copy">Built a secure, multi-tier cloud environment with monitoring, logging, and automated provisioning for modern applications.</p>
-          <div class="tag-list">
-            <span class="tag-pill">VPC</span>
-            <span class="tag-pill">S3</span>
-            <span class="tag-pill">CloudWatch</span>
-          </div>
-        </article>
-        <article class="card">
-          <div class="card-hero">
-            <span class="card-tag">Project</span>
-            <span>Portfolio</span>
-          </div>
-          <h3 class="card-title">Developer Portfolio</h3>
-          <p class="card-copy">Designed this portfolio page to reflect clean presentation, responsive layout, and easy navigation for recruiters and clients.</p>
-          <div class="tag-list">
-            <span class="tag-pill">HTML</span>
-            <span class="tag-pill">CSS</span>
-            <span class="tag-pill">JavaScript</span>
-          </div>
-        </article>
+        <a class="card-link" href="https://github.com/Jibin-G-Jiji/jenkins-maven-sonar-pipeline" target="_blank" rel="noopener noreferrer">
+          <article class="card">
+            <div class="card-hero">
+              <span class="card-tag">Project</span>
+              <span></span>
+            </div>
+            <h3 class="card-title">Jenkins Maven Sonar Pipeline</h3>
+            <p class="card-copy">Implemented end-to-end automation for testing, containerization, and staging using GitHub Actions and Terraform.</p>
+            <div class="tag-list">
+              <span class="tag-pill">Jenkins</span>
+              <span class="tag-pill">Maven</span>
+              <span class="tag-pill">SonarQube</span>
+            </div>
+          </article>
+        </a>
+        <a class="card-link" href="https://github.com/Jibin-G-Jiji/jenkins-python-sonar-pipeline" target="_blank" rel="noopener noreferrer">
+          <article class="card">
+            <div class="card-hero">
+              <span class="card-tag">Project</span>
+              <span></span>
+            </div>
+            <h3 class="card-title">Jenkins Python Sonar Pipeline</h3>
+            <p class="card-copy">Built a secure, multi-tier cloud environment with monitoring, logging, and automated provisioning for modern applications.</p>
+            <div class="tag-list">
+              <span class="tag-pill">Jenkins</span>
+              <span class="tag-pill">Python</span>
+              <span class="tag-pill">SonarQube</span>
+            </div>
+          </article>
+        </a>
+        <a class="card-link" href=https://github.com/Jibin-G-Jiji/python-django-app.git>
+          <article class="card">
+            <div class="card-hero">
+              <span class="card-tag">Project</span>
+              <span></span>
+            </div>
+            <h3 class="card-title">Python Django Pipeline with GitHub Actions</h3>
+            <p class="card-copy">Designed this portfolio page to reflect clean presentation, responsive layout, and easy navigation for recruiters and clients.</p>
+            <div class="tag-list">
+              <span class="tag-pill">Python</span>
+              <span class="tag-pill">Django</span>
+              <span class="tag-pill">GitHub Actions</span>
+            </div>
+          </article>
+        </a>
       </div>
     </section>
 
