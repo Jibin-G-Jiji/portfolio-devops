@@ -209,6 +209,48 @@ body {
   transform: scale(0.95);
 }
 
+/* Typing Indicator Animation */
+.chatbot-message.typing {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.08);
+  padding: 12px 16px;
+  min-width: 60px;
+}
+
+.chatbot-message.typing span {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  background: var(--muted) !important;
+  border-radius: 50%;
+  animation: typingBounce 1.4s infinite both !important;
+  box-shadow: none !important;
+  position: static !important;
+  top: auto !important;
+  left: auto !important;
+  right: auto !important;
+  transform: none !important;
+}
+
+.chatbot-message.typing span:nth-child(2) {
+  animation-delay: .2s !important;
+}
+
+.chatbot-message.typing span:nth-child(3) {
+  animation-delay: .4s !important;
+}
+
+@keyframes typingBounce {
+  0%, 80%, 100% {
+    transform: scale(0);
+  }
+  40% {
+    transform: scale(1);
+  }
+}
+
 .page-motion span:nth-child(1) {
   width: 24px;
   height: 24px;

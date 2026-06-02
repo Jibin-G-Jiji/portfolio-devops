@@ -117,14 +117,8 @@ const chatbotMessages = document.getElementById('chatbotMessages');
 const chatbotInput = document.getElementById('chatbotInput');
 const chatbotSend = document.getElementById('chatbotSend');
 
-const botResponses = [
-  'That\'s great! I\'m Jibin\'s assistant. How can I help you today?',
-  'I can tell you about Jibin\'s AWS expertise, DevOps projects, and more!',
-  'Feel free to ask about cloud infrastructure, CI/CD pipelines, or Jibin\'s skills.',
-  'Interested in learning more? Check out the projects section or contact Jibin directly!',
-  'Jibin specializes in AWS, automation, and secure infrastructure. What would you like to know?',
-  'Great question! Jibin focuses on reliability, speed, and clean automation in cloud environments.',
-];
+// Rolling chat history for conversational memory
+let chatHistory = [];
 
 const addMessage = (text, sender = 'user') => {
   const msgEl = document.createElement('div');
@@ -134,15 +128,75 @@ const addMessage = (text, sender = 'user') => {
   chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
 };
 
-const sendMessage = () => {
+const sendMessage = async () => {
   const text = chatbotInput.value.trim();
   if (!text) return;
+
+  // 1. Display user message
   addMessage(text, 'user');
   chatbotInput.value = '';
-  setTimeout(() => {
-    const response = botResponses[Math.floor(Math.random() * botResponses.length)];
-    addMessage(response, 'bot');
-  }, 400);
+
+  // 2. Add to chat history
+  chatHistory.push({
+    role: 'user',
+    parts: [{ text: text }]
+  });
+
+  // Limit context to last 10 messages (5 rounds of Q&A)
+  if (chatHistory.length > 10) {
+    chatHistory = chatHistory.slice(chatHistory.length - 10);
+  }
+
+  // 3. Create & show typing indicator bubble
+  const typingIndicator = document.createElement('div');
+  typingIndicator.className = 'chatbot-message bot typing';
+  typingIndicator.innerHTML = '<span>.</span><span>.</span><span>.</span>';
+  chatbotMessages.appendChild(typingIndicator);
+  chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+
+  try {
+    const response = await fetch('/api/chat', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ contents: chatHistory })
+    });
+
+    // Remove typing indicator
+    typingIndicator.remove();
+
+    if (!response.ok) {
+      const errData = await response.json();
+      if (errData.error === 'API_KEY_MISSING') {
+        addMessage("⚠️ The AI assistant is not configured. Please add your GROQ_API_KEY to the .env file.", 'bot');
+      } else {
+        addMessage("🤖 Sorry, I encountered an issue. Please try again!", 'bot');
+      }
+      return;
+    }
+
+    const data = await response.json();
+    const replyText = data.text;
+
+    // 4. Display AI response
+    addMessage(replyText, 'bot');
+
+    // 5. Save response to chat history
+    chatHistory.push({
+      role: 'model',
+      parts: [{ text: replyText }]
+    });
+
+    if (chatHistory.length > 10) {
+      chatHistory = chatHistory.slice(chatHistory.length - 10);
+    }
+  } catch (error) {
+    typingIndicator.remove();
+    console.error('Backend fetch failed:', error);
+    addMessage("🔌 Cannot reach the server. Please make sure the backend is running with 'npm run dev'.", 'bot');
+    chatHistory.pop();
+  }
 };
 
 chatbotToggle.addEventListener('click', () => {
